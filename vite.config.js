@@ -12,25 +12,28 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
-      includeAssets: ['diksha logo 01.png'],
+      includeAssets: ['diksha-logo-01.png'],
       manifest: {
         name: 'Bill Maker',
         short_name: 'BillMaker',
         description: 'Bill Maker Application',
         theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        start_url: '/',
         icons: [
           {
-            src: 'diksha logo 01.png',
+            src: 'diksha-logo-01.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'diksha logo 01.png',
+            src: 'diksha-logo-01.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: 'diksha logo 01.png',
+            src: 'diksha-logo-01.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
