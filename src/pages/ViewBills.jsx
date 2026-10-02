@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Loader2, ExternalLink, RefreshCw, Download } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Loader2, ExternalLink, RefreshCw, Download, Pencil, FileText } from 'lucide-react';
 
 const APPSCRIPT_URL = import.meta.env.VITE_APPSCRIPT_URL;
 const SHEET_NAME = import.meta.env.VITE_SHEET_NAME;
@@ -12,12 +13,17 @@ const ViewBills = () => {
   const [bills, setBills] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  // Header row is passed along so the edit page can find the GSTIN / Invoice Data columns
+  const editBill = (row) => navigate('/create', { state: { editRow: row, headers: bills[0] || [] } });
 
   const fetchBills = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${APPSCRIPT_URL}?sheet=${SHEET_NAME}`);
+      // Cache-buster so an edited bill shows up straight away
+      const response = await fetch(`${APPSCRIPT_URL}?sheet=${SHEET_NAME}&_t=${Date.now()}`, { cache: 'no-store' });
       const result = await response.json();
       
       if (!result.success) {
@@ -121,7 +127,22 @@ const ViewBills = () => {
                               <Download size={14} />
                               Download
                             </a>
+                            <button
+                              type="button"
+                              onClick={() => editBill(row)}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', backgroundColor: '#fef3c7', color: '#92400e', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s ease' }}
+                              onMouseOver={e => { e.currentTarget.style.backgroundColor = '#fde68a'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+                              onMouseOut={e => { e.currentTarget.style.backgroundColor = '#fef3c7'; e.currentTarget.style.transform = 'none' }}
+                            >
+                              <Pencil size={14} />
+                              Edit
+                            </button>
                           </div>
+                        ) : row[4] ? (
+                          <button type="button" onClick={() => editBill(row)} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', backgroundColor: '#fef3c7', color: '#92400e', border: 'none', borderRadius: '6px', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>
+                            <Pencil size={14} />
+                            Edit
+                          </button>
                         ) : '-'}
                       </td>
                     </tr>

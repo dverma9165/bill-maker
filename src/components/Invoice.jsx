@@ -121,7 +121,7 @@ const Invoice = React.forwardRef(({ data, onChange }, ref) => {
             <td colSpan="2" rowSpan="4" className="valign-top p-5">
               <div>Supplier's Detail :</div>
               <div style={{ textAlign: 'center', marginTop: '4px' }}>
-                <EditableField value={data.supplierName} onChange={(v) => handleChange('supplierName', v)} className="bold-text" style={{ fontSize: '16px' }} />
+                <EditableField value={data.supplierName} onChange={(v) => handleChange('supplierName', v)} multiline={true} className="bold-text" style={{ fontSize: '16px' }} />
               </div>
               <div style={{ marginTop: '2px' }}>
                 <EditableField value={data.supplierAddress} onChange={(v) => handleChange('supplierAddress', v)} multiline={true} />

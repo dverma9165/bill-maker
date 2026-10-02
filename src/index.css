@@ -37,7 +37,93 @@ body {
   box-sizing: border-box;
   color: black;
   margin: 0 auto;
+  /* Stop mobile browsers from auto-enlarging invoice text (keeps same layout as desktop) */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
+
+/* === DIKSHA DESIGN & PRINT TEMPLATE === */
+.ddp-invoice {
+  width: 100%;
+  min-width: 794px;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  color: #111;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+.ddp-invoice * { font-family: 'Inter', Arial, Helvetica, sans-serif; }
+.ddp-invoice input::placeholder, .ddp-invoice textarea::placeholder { color: #94a3b8; font-weight: 400; }
+.ddp-row { display: flex; }
+.ddp-between { justify-content: space-between; align-items: center; gap: 16px; }
+.ddp-flex { display: flex; align-items: center; }
+.ddp-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 24px; }
+.ddp-title { color: #1d4ed8; font-weight: 700; font-size: 15px; letter-spacing: 2px; }
+.ddp-original { font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #333; }
+.ddp-company { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+.ddp-logo { width: 110px; height: auto; object-fit: contain; }
+.ddp-b { font-weight: 700; }
+.ddp-lg { font-size: 13px; }
+.ddp-small { font-size: 11px; }
+.ddp-xs { font-size: 10px; }
+.ddp-label { margin-bottom: 2px; }
+.ddp-item-name { font-size: 12.5px; font-weight: 500; }
+
+.ddp-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-top: 18px; }
+.ddp-table th {
+  font-size: 11px; font-weight: 600; text-align: right; padding: 6px 4px;
+  border-top: 1.5px solid #1d4ed8; border-bottom: 1.5px solid #1d4ed8;
+}
+.ddp-table td { text-align: right; padding: 8px 4px; vertical-align: middle; border-bottom: 1px solid #d4d4d4; }
+.ddp-table .ddp-left { text-align: left; }
+.ddp-table td.ddp-left { vertical-align: top; }
+.ddp-pct {
+  width: 3ch; border: none; outline: none; background: transparent; padding: 0; margin: 0;
+  font: inherit; color: inherit; text-align: center;
+}
+.ddp-remove {
+  margin-left: 4px; border: none; background: #fee2e2; color: #b91c1c; border-radius: 4px;
+  cursor: pointer; font-size: 12px; line-height: 1; padding: 1px 5px;
+}
+.ddp-add {
+  margin-top: 8px; border: 1px dashed #1d4ed8; background: #eff6ff; color: #1d4ed8;
+  border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+
+.ddp-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ddp-controls .ddp-add { margin-top: 0; }
+.ddp-taxtype { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: #334155; }
+.ddp-taxtype button {
+  border: 1px solid #cbd5e1; background: white; color: #475569; border-radius: 6px;
+  padding: 5px 10px; font-size: 12px; font-weight: 600; cursor: pointer;
+}
+.ddp-taxtype button.active { background: #1d4ed8; border-color: #1d4ed8; color: white; }
+.ddp-summary { width: 42%; margin-left: auto; margin-top: 4px; }
+.ddp-sum-row { display: flex; justify-content: space-between; padding: 2px 6px 2px 0; }
+.ddp-total {
+  font-size: 18px; font-weight: 700; border-top: 1.5px solid #555; margin-top: 6px; padding-top: 4px;
+}
+.ddp-words { margin-top: 6px; padding-bottom: 3px; border-bottom: 1.5px solid #1d4ed8; align-items: flex-end; }
+.ddp-payable {
+  display: flex; justify-content: space-between; width: 42%; margin-left: auto;
+  font-weight: 700; padding: 4px 6px 4px 0; border-bottom: 1.5px solid #1d4ed8;
+}
+.ddp-bank td { padding: 2px 0; font-size: 11.5px; }
+.ddp-bank td:first-child { width: 140px; }
+.ddp-sign { text-align: center; min-width: 200px; }
+
+.template-switch { display: inline-flex; background: #f1f5f9; border-radius: 10px; padding: 4px; gap: 4px; }
+.template-switch button {
+  border: none; background: transparent; padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: #475569;
+}
+.template-switch button.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
 /* Force Arial/Helvetica for the invoice specifically so it looks official */
 .invoice-container * {
