@@ -3,7 +3,7 @@ import EditableField from './EditableField';
 
 const DDP_SUPPLIER = {
   name: 'RAMESHWAR VERMA (Diksha Design & Print)',
-  gstin: '22CSMPP0228F1ZZ (N/A)',
+  gstin: '(N/A)',
   addressLines: ['Main Road Village Arjuni, Post Arjuni', 'BalodaBazar, Bhatapara,', 'Raipur, CHHATTISGARH', 'Pin : 493331'],
   mobile: '+91 9977882148',
   email: 'rajv437@gmail.com',
